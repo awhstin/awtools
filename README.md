@@ -1,11 +1,4 @@
----
-title: "awtools"
-output:
-  html_document:
-    keep_md: true
-  md_document:
-    variant: markdown_github
----
+# awtools
 # a_theme
 A simple, distilled, #rstats theme used mainly on [www.austinwehrwein.com](http://austinwehrwein.com/)
 
@@ -16,7 +9,8 @@ This theme uses fonts that can be found and downloaded from Google Fonts:
  
  # Examples
 Here is a simple scatterplot
-```{r, echo=TRUE}
+
+```r
 #devtools::install_github('awhstin/awtools')
 library(awtools)
 library(gcookbook)
@@ -29,9 +23,12 @@ ggplot(heightweight,aes(x=ageYear,y=heightIn,color=ageYear))+
        subtitle='Sample data of height in inches by age in years.',
        caption='Source: R Graphics Cookbook')
 ```
+
+![](README_files/figure-html/unnamed-chunk-1-1.png)<!-- -->
  
 Here is an example of the color palette
-```{r, echo=TRUE}
+
+```r
 ggplot(uspopage, aes(x=Year, y=Thousands, fill=AgeGroup)) + 
   geom_area() +
   a_scale_fill() +
@@ -42,4 +39,6 @@ ggplot(uspopage, aes(x=Year, y=Thousands, fill=AgeGroup)) +
   a_theme() +
   theme(legend.position="bottom")
 ```
+
+![](README_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
 
