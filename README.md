@@ -27,6 +27,7 @@ Here is a simple scatterplot with the original <code>a_theme</code>.
 library(awtools)
 library(gcookbook)
 library(ggplot2)
+library(dplyr)
 
 ggplot(heightweight,aes(x=ageYear,y=heightIn,color=ageYear))+
   geom_point()+
@@ -39,35 +40,6 @@ ggplot(heightweight,aes(x=ageYear,y=heightIn,color=ageYear))+
 ![](README_files/figure-html/unnamed-chunk-1-1.png)<!-- -->
 
 Here is a simple scatterplot with a revised version using specifically Roboto series fonts <code>a_robot_theme</code>. Along with some added elements, sizing, and other aesthetic fixes this will be used most on my website. 
-
-```r
-#devtools::install_github('awhstin/awtools')
-library(awtools)
-library(gcookbook)
-library(ggplot2)
-library(dplyr)
-```
-
-```
-## Warning: package 'dplyr' was built under R version 3.4.2
-```
-
-```
-## 
-## Attaching package: 'dplyr'
-```
-
-```
-## The following objects are masked from 'package:stats':
-## 
-##     filter, lag
-```
-
-```
-## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union
-```
 
 ```r
 ggplot(heightweight,aes(x=ageYear,y=heightIn,color=ageYear))+
