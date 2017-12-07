@@ -46,30 +46,7 @@ library(awtools)
 library(gcookbook)
 library(ggplot2)
 library(dplyr)
-```
 
-```
-## Warning: package 'dplyr' was built under R version 3.4.2
-```
-
-```
-## 
-## Attaching package: 'dplyr'
-```
-
-```
-## The following objects are masked from 'package:stats':
-## 
-##     filter, lag
-```
-
-```
-## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union
-```
-
-```r
 ggplot(heightweight,aes(x=ageYear,y=heightIn,color=ageYear))+
   geom_point()+
   a_robot_theme()+

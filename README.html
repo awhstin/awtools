@@ -153,17 +153,9 @@ ggplot(heightweight,aes(x=ageYear,y=heightIn,color=ageYear))+
 library(awtools)
 library(gcookbook)
 library(ggplot2)
-library(dplyr)</code></pre>
-<pre><code>## Warning: package 'dplyr' was built under R version 3.4.2</code></pre>
-<pre><code>## 
-## Attaching package: 'dplyr'</code></pre>
-<pre><code>## The following objects are masked from 'package:stats':
-## 
-##     filter, lag</code></pre>
-<pre><code>## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union</code></pre>
-<pre class="r"><code>ggplot(heightweight,aes(x=ageYear,y=heightIn,color=ageYear))+
+library(dplyr)
+
+ggplot(heightweight,aes(x=ageYear,y=heightIn,color=ageYear))+
   geom_point()+
   a_robot_theme()+
   labs(title='Height by Age',

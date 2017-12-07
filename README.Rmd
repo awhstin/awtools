@@ -36,7 +36,7 @@ ggplot(heightweight,aes(x=ageYear,y=heightIn,color=ageYear))+
 ```
 
 Here is a simple scatterplot with a revised version using specifically Roboto series fonts <code>a_robot_theme</code>. Along with some added elements, sizing, and other aesthetic fixes this will be used most on my website. 
-```{r, echo=TRUE}
+```{r echo=TRUE, message=FALSE, warning=FALSE}
 #devtools::install_github('awhstin/awtools')
 library(awtools)
 library(gcookbook)
