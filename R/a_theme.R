@@ -132,6 +132,19 @@ a_step_colour <- function(...) { discrete_scale("colour", "a", a_spal(), ...) }
 a_step_color<-a_step_colour
 a_step_fill<-function(...) { discrete_scale("fill", "a", a_spal(), ...) }
 
+#primary color palette
+ppalette<-c('#F7DC05','#F99D1E','#EC0B88','#695092','#3d98d3','#00B0AB','#5D6966','#000000')
+p_pal<- function() { scales::manual_pal(ppalette) }
+a_primary_colour <- function(...) { discrete_scale("colour", "a", p_pal(), ...) }
+a_primary_color<-a_primary_colour
+a_primary_fill <- function(...) { discrete_scale("fill", "a", p_pal(), ...) }
+
+#secondary color palette
+spalette<-c('#9F248F','#FF7175','#FFCE4E','#EF4123','#1E4665','#E1E327','#A93B3A','#00B0AB')
+s_pal<- function() { scales::manual_pal(spalette)}
+a_secondary_colour <- function(...) { discrete_scale("colour", "a", s_pal(), ...) }
+a_secondary_color<-a_secondary_colour
+a_secondary_fill <- function(...) { discrete_scale("fill", "a", s_pal(), ...) }
 
 
 #for use with axis labels, returns absolute value with commas
