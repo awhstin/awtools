@@ -1,11 +1,3 @@
----
-title: "awtools"
-output:
-  html_document:
-    keep_md: true
-  md_document:
-    variant: markdown_github
----
 # a_theme
 A simple, distilled, #rstats theme used mainly on [www.austinwehrwein.com](https://austinwehrwein.com/)
 
