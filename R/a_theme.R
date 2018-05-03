@@ -200,7 +200,73 @@ a_concert_theme<- function(
   aplot <- aplot + theme(plot.subtitle=element_text(hjust=0, size=subtitle_size, margin=margin(t = 4, b = 12, unit = "pt"),family=subtitle_family, face=subtitle_face,color='#565656', lineheight=1))
   aplot <- aplot + theme(plot.caption=element_text(hjust=1, size=caption_size,  family=caption_family, face=caption_face,color='#565656'))
   aplot
+}
+#PLex
+a_plex_theme<- function(
+  base_family="Open Sans",
+  base_size = 8,
+  plot_title_family='IBM Plex Mono',
+  plot_title_size = 18,
+  plot_title_face="bold",
+  subtitle_family=base_family,
+  subtitle_size = 10,
+  subtitle_face = "plain",
+  strip_text_family = base_family,
+  strip_text_size = 10,
+  strip_text_face = "plain",
+  caption_family= base_family,
+  caption_size = 10,
+  caption_face = "plain",
+  axis_text_size = base_size,
+  axis_title_family = plot_title_family,
+  axis_title_size = 10,
+  axis_title_face = "plain",
+  grid_col='#dedede',
+  grid=TRUE,
+  noaxis=FALSE,
+  emphasis='xy',
+  rotate_x=FALSE)
+{
+  aplot <- ggplot2::theme_minimal(base_family=base_family, base_size=base_size)
   
+  if (inherits(grid, "character") | grid == TRUE) {
+    
+    aplot <- aplot + theme(panel.grid=element_line(color=grid_col, size=0.2))
+    aplot <- aplot + theme(panel.grid.major=element_line(color=grid_col, size=0.2))
+    aplot <- aplot + theme(panel.grid.minor=element_line(color=grid_col, size=0.15))
+    
+    
+    if (inherits(grid, "character")) {
+      if (regexpr("X", grid)[1] < 0) aplot <- aplot + theme(panel.grid.major.x=element_blank())
+      if (regexpr("Y", grid)[1] < 0) aplot <- aplot + theme(panel.grid.major.y=element_blank())
+      if (regexpr("x", grid)[1] < 0) aplot <- aplot + theme(panel.grid.minor.x=element_blank())
+      if (regexpr("y", grid)[1] < 0) aplot <- aplot + theme(panel.grid.minor.y=element_blank())
+    }
+    
+  } else {
+    aplot <- aplot + theme(panel.grid=element_blank())
+  }
+  if (inherits(grid, "character") | rotate_x == TRUE) {
+    aplot<-aplot+theme(axis.text.x = element_text(angle = 90, hjust = 1))
+  } 
+  
+  aplot <- aplot + theme(legend.background=element_blank())
+  aplot <- aplot + theme(legend.key=element_blank())
+  if (inherits(grid, "character") | noaxis == TRUE) {
+    aplot <- aplot + theme(axis.text.x=element_blank())
+    aplot <- aplot + theme(axis.text.y=element_blank())}
+  else{
+    aplot <- aplot + theme(axis.text.x=element_text(size=axis_text_size,family=subtitle_family,face = dplyr::case_when(emphasis=='x' ~'bold',emphasis=='y'~'plain',emphasis=='xy'~'plain'),color='#444444'))
+    aplot <- aplot + theme(axis.text.y=element_text(size=axis_text_size,family=subtitle_family,face = dplyr::case_when(emphasis=='y' ~'bold',emphasis=='x'~'plain',emphasis=='xy'~'plain'),color='#444444'))}
+  aplot <- aplot + theme(axis.title=element_text(size=axis_title_size, family=axis_title_family,color='#444444'))
+  aplot <- aplot + theme(axis.title.x=element_text(size=axis_title_size, family=axis_title_family, face=axis_title_face, margin=margin(t = 18, b = 10, unit = "pt")))
+  aplot <- aplot + theme(axis.title.y=element_text(size=axis_title_size, family=axis_title_family, face=axis_title_face,margin=margin(r = 18, unit = "pt")))
+  aplot <- aplot + theme(strip.text=element_text(hjust=0, size=strip_text_size,face=strip_text_face, family=strip_text_family))
+  aplot <- aplot + theme(panel.spacing=grid::unit(2, "lines"))
+  aplot <- aplot + theme(plot.title=element_text(hjust=0, size=plot_title_size, family=plot_title_family, face=plot_title_face,color='#444444'))
+  aplot <- aplot + theme(plot.subtitle=element_text(hjust=0, size=subtitle_size, margin=margin(t = 4, b = 12, unit = "pt"),family=subtitle_family, face=subtitle_face,color='#565656', lineheight=1))
+  aplot <- aplot + theme(plot.caption=element_text(hjust=1, size=caption_size,  family=caption_family, face=caption_face,color='#565656'))
+  aplot
 }
 
 #fun color palette #1
