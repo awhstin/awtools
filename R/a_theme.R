@@ -314,3 +314,9 @@ a_main_fill <- function(...) { discrete_scale("fill", "a", m_pal(), ...) }
 abs_comma <- function (x, ...) {
   format(abs(x), ..., big.mark = ",", scientific = FALSE, trim = TRUE)
 }
+
+m.compress <- function(tx) { 
+  div <- findInterval(as.numeric(gsub("\\,", "", tx)), 
+                      c(1, 1e3, 1e6, 1e9, 1e12) )
+  paste(round( as.numeric(gsub("\\,","",tx))/10^(3*(div-1)), 2), 
+        c("","K","M","B","T")[div] )} #from https://stackoverflow.com/questions/28159936/formatting-large-currency-or-dollar-values-to-millions-billions/28160040
