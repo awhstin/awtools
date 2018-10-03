@@ -26,13 +26,11 @@ The new <code>a\_concert\_theme</code> uses fonts that can be found and download
 New Examples
 ------------
 
-#### a\_plex\_theme features:
+#### <code>a\_plex\_theme</code> features:
 
 -   grid: \[TRUE/FALSE\] turns off the main panel grids.
 -   noaxis: \[TRUE/FALSE\] turns off the axis of the plot, seen mainly in maps.
 -   emphasis: \['x','y','xy'\] adds a bold to an axis title for emphasis.
-
-A new update to the awtools package sees a dark theme and grays palette.
 
 ``` r
 groups<-unique(uspopage$AgeGroup)
@@ -106,20 +104,6 @@ ggplot(lax, aes(x=TAVG, y=month, fill=year)) +
 
 ![](README_files/figure-markdown_github/unnamed-chunk-4-1.png)
 
-``` r
-ggplot(uspopage, aes(x=Year, y=Thousands, color=AgeGroup)) + 
-  geom_line(size=1) +
-  a_main_color() +
-  scale_y_continuous(labels = scales::comma)+
-  labs(title="Age distribution of population\nin the U.S., 1900-2002",
-       subtitle="Example data from the R Graphics Cookbook.",
-       caption="Source: R Graphics Cookbook") +
-  a_dark_theme() +
-  theme(legend.position="bottom")
-```
-
-![](README_files/figure-markdown_github/unnamed-chunk-5-1.png)
-
 Old examples
 ------------
 
@@ -134,7 +118,7 @@ ggplot(heightweight,aes(x=ageYear,y=heightIn,color=ageYear))+
        caption='Source: R Graphics Cookbook')
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-6-1.png)
+![](README_files/figure-markdown_github/unnamed-chunk-5-1.png)
 
 Here is an example of the color palette.
 
@@ -150,7 +134,7 @@ ggplot(uspopage, aes(x=Year, y=Thousands, fill=AgeGroup)) +
   theme(legend.position="bottom")
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-7-1.png)
+![](README_files/figure-markdown_github/unnamed-chunk-6-1.png)
 
 I also created a reverse of the color palette which is debuted along with the 'a\_robot\_theme'.
 
@@ -166,7 +150,7 @@ ggplot(uspopage, aes(x=Year, y=Thousands, fill=AgeGroup)) +
   theme(legend.position="bottom")
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-8-1.png)
+![](README_files/figure-markdown_github/unnamed-chunk-7-1.png)
 
 Finally for work I compare 4 and 6 factors often so I created a stepped version of my color palette.
 
@@ -187,7 +171,7 @@ ggplot(uspopages, aes(x=Year, y=Thousands, fill=AgeGroup)) +
   theme(legend.position="bottom")
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-9-1.png)
+![](README_files/figure-markdown_github/unnamed-chunk-8-1.png)
 
 Finally a little display of a new color palette.
 
@@ -206,4 +190,4 @@ ggplot(uspopage, aes(x=Year, y=Thousands, color=AgeGroup)) +
   theme(legend.position="bottom")
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-10-1.png)
+![](README_files/figure-markdown_github/unnamed-chunk-9-1.png)
