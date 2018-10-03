@@ -40,7 +40,7 @@ uspopage<-uspopage%>%
   filter(uspopage$AgeGroup %in% head(groups,6))
 ggplot(uspopage, aes(x=Year, y=Thousands, color=AgeGroup)) + 
   geom_line(size=1) +
-  a_gray_color() +
+  a_primary_color() +
   scale_y_continuous(labels = scales::comma)+
   labs(title="Age distribution of population\nin the U.S., 1900-2002",
        subtitle="Example data from the R Graphics Cookbook.",
@@ -48,11 +48,6 @@ ggplot(uspopage, aes(x=Year, y=Thousands, color=AgeGroup)) +
   a_plex_theme() +
   theme(legend.position="bottom")
 ```
-
-    ## Warning: This manual palette can handle a maximum of 4 values. You have
-    ## supplied 6.
-
-    ## Warning: Removed 206 rows containing missing values (geom_path).
 
 ![](README_files/figure-markdown_github/unnamed-chunk-2-1.png)
 
