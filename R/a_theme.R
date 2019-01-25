@@ -377,7 +377,7 @@ a_secondary_color<-a_secondary_colour
 a_secondary_fill <- function(...) { discrete_scale("fill", "a", s_pal(), ...) }
 
 #the main event
-mpalette<-c('#01985c','#FFCE4E','#1E4665','#FF7175','#8cdb5e','#3d98d3','#5e35b1','#f50057','#fb8c00') 
+mpalette<-c('#43a047','#FFCE4E','#1E4665','#FF7175','#8cdb5e','#3d98d3','#5e35b1','#f50057','#fb8c00') 
 m_pal<- function() { scales::manual_pal(mpalette)}
 a_main_colour <- function(...) { discrete_scale("colour", "a", m_pal(), ...) }
 a_main_color<-a_main_colour
