@@ -38,7 +38,7 @@ uspopage<-uspopage%>%
   filter(uspopage$AgeGroup %in% head(groups,6))
 ggplot(uspopage, aes(x=Year, y=Thousands, color=AgeGroup)) + 
   geom_line(size=1) +
-  a_primary_color() +
+  a_main_color() +
   scale_y_continuous(labels = scales::comma)+
   labs(title="Age distribution of population\nin the U.S., 1900-2002",
        subtitle="Example data from the R Graphics Cookbook.",
@@ -80,15 +80,15 @@ lax<-read_csv('https://raw.githubusercontent.com/awhstin/temperaturesv2/master/L
     ##   NAME = col_character(),
     ##   DATE = col_date(format = ""),
     ##   AWND = col_double(),
-    ##   PGTM = col_character(),
+    ##   PGTM = col_logical(),
     ##   PRCP = col_double(),
-    ##   SNOW = col_character(),
-    ##   SNWD = col_character(),
-    ##   TAVG = col_integer(),
-    ##   TMAX = col_integer(),
-    ##   TMIN = col_integer(),
-    ##   WDF2 = col_integer(),
-    ##   WDF5 = col_integer(),
+    ##   SNOW = col_logical(),
+    ##   SNWD = col_logical(),
+    ##   TAVG = col_double(),
+    ##   TMAX = col_double(),
+    ##   TMIN = col_double(),
+    ##   WDF2 = col_double(),
+    ##   WDF5 = col_double(),
     ##   WSF2 = col_double(),
     ##   WSF5 = col_double()
     ## )
