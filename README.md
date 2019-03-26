@@ -23,6 +23,10 @@ The new <code>a\_concert\_theme</code> uses fonts that can be found and download
 -   [Concert One](https://fonts.google.com/specimen/Concert+One) (plot title, axis\_title)
 -   [Inconsolata](https://fonts.google.com/specimen/Inconsolata) (subtitle, captions, axis\_text)
 
+Get it
+------------
+<code>devtools::install_github('awhstin/awtools')</code>
+
 New Examples
 ------------
 
