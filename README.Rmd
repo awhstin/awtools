@@ -3,33 +3,20 @@ title: "awtools"
 output:
   md_document:
     variant: markdown_github
-  html_document:
-    keep_md: true
 ---
-# a_theme
+[![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/0.1.0/active.svg)](http://www.repostatus.org/#active)
+
+# awtools
 A simple, distilled, #rstats theme used mainly on [www.austinwehrwein.com](https://austinwehrwein.com/)
 
-My main theme now is the <code>a_plex_theme</code> which the fonts are available from Google Fonts:
+The main theme is the <code>a_plex_theme</code> which the fonts are available from Google Fonts:
 
 - [IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono) (plot title, legend)
-- [Open Sans](https://fonts.google.com/specimen/Open+Sans) (subtitle, captions, axis_text)
+- [IBM Plex Sans](https://fonts.google.com/specimen/IBM+Plex+Sans) (subtitle, captions, axis_text)
 
-The original <code>a_theme</code> uses fonts that can be found and downloaded from Google Fonts:
+<code>a_dark_theme</code> shares mostly all the same elements of the main theme but the colors are adjusted to make a dark theme.
 
-- [Roboto](https://fonts.google.com/specimen/Slabo+27px) (plot title, legend)
-- [Open Sans](https://fonts.google.com/specimen/Open+Sans) (subtitle, captions, axis_text)
- 
-The new <code>a_robot_theme</code> uses fonts that can be found and downloaded from Google Fonts:
-
-- [Roboto Slab](https://fonts.google.com/specimen/Roboto+Slab) (plot title, legend)
-- [Roboto Light](https://fonts.google.com/specimen/Roboto) (subtitle, captions, axis_text)
- 
-The new <code>a_concert_theme</code> uses fonts that can be found and downloaded from Google Fonts:
-
-- [Concert One](https://fonts.google.com/specimen/Concert+One) (plot title, axis_title)
-- [Inconsolata](https://fonts.google.com/specimen/Inconsolata) (subtitle, captions, axis_text)
- 
-## New Examples
+## Examples
 ####<code>a_plex_theme</code> features:
 - grid: [TRUE/FALSE] turns off the main panel grids.
 - noaxis: [TRUE/FALSE] turns off the axis of the plot, seen mainly in maps.
@@ -41,34 +28,42 @@ library(gcookbook)
 library(ggplot2)
 library(tidyverse)
 library(ggridges)
+library(extrafont)
+library(pals)
 ```
+
+##palettes
 ```{r warning=FALSE}
-groups<-unique(uspopage$AgeGroup)
-uspopage<-uspopage%>%
-  filter(uspopage$AgeGroup %in% head(groups,6))
-ggplot(uspopage, aes(x=Year, y=Thousands, color=AgeGroup)) + 
-  geom_line(size=1) +
-  a_main_color() +
-  scale_y_continuous(labels = scales::comma)+
-  labs(title="Age distribution of population\nin the U.S., 1900-2002",
-       subtitle="Example data from the R Graphics Cookbook.",
-       caption="Source: R Graphics Cookbook") +
+pal.bands(ppalette,mpalette,spalette,gpalette,labels = c('Primary','Flat','Secondary','Gray'))
+
+```
+
+An example using the <code>a_plex_theme</code> with the <code>a_flat_color</code> palette.
+
+```{r warning=FALSE}
+ggplot(heightweight,aes(x=heightIn,y=weightLb, color = factor(round(ageYear)))) + 
+  geom_point() +
   a_plex_theme() +
-  theme(legend.position="bottom")
+  a_flat_color() +
+  labs(
+    title='Height and Weight',
+    subtitle='Sample data of height inches and weight in pounds.',
+    caption='Source: R Graphics Cookbook',
+    color='Age'
+  )
 ```
 
-A new update to the awtools package sees a new dark theme that is based on the main plex theme.
+Example of <code>a_dark_theme</code> with the primary color palette.
 
 ```{r warning=FALSE}
-ggplot(uspopage, aes(x=Year, y=Thousands, color=AgeGroup)) + 
-  geom_line(size=1) +
-  a_main_color() +
-  scale_y_continuous(labels = scales::comma)+
-  labs(title="Age distribution of population\nin the U.S., 1900-2002",
-       subtitle="Example data from the R Graphics Cookbook.",
-       caption="Source: R Graphics Cookbook") +
-  a_dark_theme() +
-  theme(legend.position="bottom")
+ggplot(mtcars, aes(mpg, wt)) +
+  geom_point(aes(color=factor(carb), size=drat)) +
+  labs(x="Fuel efficiency (mpg)", y="Weight (tons)",
+       title="Basic scatterplot example",
+       subtitle="A demonstration",
+       caption="This be a caption") + 
+  a_primary_color() +
+  a_dark_theme()
 ```
  
 And a new <code>a_gray_color</code> and <code>a_gray_palette</code> which is a simple four color grays palette.
@@ -85,74 +80,61 @@ ggplot(lax, aes(x=TAVG, y=month, fill=year)) +
   a_gray_fill()
 ```
 
-##Old examples
+##Old 
+
+The original <code>a_theme</code> uses fonts that can be found and downloaded from Google Fonts:
+
+- [Roboto](https://fonts.google.com/specimen/Slabo+27px) (plot title, legend)
+- [Open Sans](https://fonts.google.com/specimen/Open+Sans) (subtitle, captions, axis_text)
+ 
+The new <code>a_robot_theme</code> uses fonts that can be found and downloaded from Google Fonts:
+
+- [Roboto Slab](https://fonts.google.com/specimen/Roboto+Slab) (plot title, legend)
+- [Roboto Light](https://fonts.google.com/specimen/Roboto) (subtitle, captions, axis_text)
+ 
+The new <code>a_concert_theme</code> uses fonts that can be found and downloaded from Google Fonts:
+
+- [Concert One](https://fonts.google.com/specimen/Concert+One) (plot title, axis_title)
+- [Inconsolata](https://fonts.google.com/specimen/Inconsolata) (subtitle, captions, axis_text)
+ 
 Here is a simple scatterplot with the original <code>a_theme</code>.
-```{r echo=TRUE, message=FALSE, warning=FALSE}
-ggplot(heightweight,aes(x=ageYear,y=heightIn,color=ageYear))+
+```{r message=FALSE, warning=FALSE}
+ggplot(heightweight,aes(x=ageYear,y=heightIn, color=sex))+
   geom_point()+
   a_theme()+
+  a_scale_color() +
   labs(title='Height by Age',
        subtitle='Sample data of height in inches by age in years.',
        caption='Source: R Graphics Cookbook')
 ```
  
-Here is an example of the color palette.
-```{r, echo=TRUE}
-ggplot(uspopage, aes(x=Year, y=Thousands, fill=AgeGroup)) + 
-  geom_area() +
-  a_scale_fill() +
-  scale_y_continuous(labels = scales::comma)+
-  labs(title="Age distribution of population\nin the U.S., 1900-2002",
-       subtitle="Example data from the R Graphics Cookbook.",
-       caption="Source: R Graphics Cookbook") +
-  a_theme() +
-  theme(legend.position="bottom")
-```
+<code>a_robot_theme</code> gets the name from the use of Roboto and Roboto Slab for the base and plot title fonts. 
 
-I also created a reverse of the color palette which is debuted along with the 'a_robot_theme'.
-```{r, echo=TRUE}
-ggplot(uspopage, aes(x=Year, y=Thousands, fill=AgeGroup)) + 
-  geom_area() +
-  a_reversed_fill() +
-  scale_y_continuous(labels = scales::comma)+
-  labs(title="Age distribution of population\nin the U.S., 1900-2002",
-       subtitle="Example data from the R Graphics Cookbook.",
-       caption="Source: R Graphics Cookbook") +
+```{r message=FALSE, warning=FALSE}
+ggplot(heightweight,aes(x=heightIn,y=ageYear, color = factor(round(ageYear)))) + 
+  geom_point() +
   a_robot_theme() +
-  theme(legend.position="bottom")
+  a_flat_color() +
+  labs(
+    title='Height and Age',
+    subtitle='Sample data of height inches and age in years.',
+    caption='Source: R Graphics Cookbook',
+    color='Age'
+  )
 ```
 
-Finally for work I compare 4 and 6 factors often so I created a stepped version of my color palette. 
+The <code>a_concert_theme</code> was developed for a more editorial style visualization. 
 
-I also created a reverse of the color palette which is seen below. There has been some work that requires a slightly more editorial style graph so here is also the debut of the 'a_concert_theme'. 
-```{r, echo=TRUE}
-groups<-unique(uspopage$AgeGroup)
-uspopages<-uspopage%>%
-  filter(uspopage$AgeGroup %in% head(groups,4))
-ggplot(uspopages, aes(x=Year, y=Thousands, fill=AgeGroup)) + 
-  geom_area() +
-  a_step_fill() +
-  scale_y_continuous(labels = scales::comma)+
-  labs(title="Age distribution of population\nin the U.S., 1900-2002",
-       subtitle="Example data from the R Graphics Cookbook.",
-       caption="Source: R Graphics Cookbook") +
+```{r message=FALSE, warning=FALSE}
+ggplot(climate,aes(x=Year,y=climate$Anomaly10y, color=Source)) + 
+  geom_line(size=.75) +
   a_concert_theme() +
-  theme(legend.position="bottom")
-```
-
-Finally a little display of a new color palette. 
-```{r}
-groups<-unique(uspopage$AgeGroup)
-uspopage<-uspopage%>%
-  filter(uspopage$AgeGroup %in% head(groups,6))
-ggplot(uspopage, aes(x=Year, y=Thousands, color=AgeGroup)) + 
-  geom_line(size=1) +
-  a_main_color() +
-  scale_y_continuous(labels = scales::comma)+
-  labs(title="Age distribution of population\nin the U.S., 1900-2002",
-       subtitle="Example data from the R Graphics Cookbook.",
-       caption="Source: R Graphics Cookbook") +
-  a_concert_theme() +
-  theme(legend.position="bottom")
+  a_primary_color() +
+  labs(
+    title='Temperature Anomaly',
+    subtitle='Anomaly in Celsius, smoothed over ten years',
+    caption='Source: R Graphics Cookbook',
+    y='Anomaly'
+  )
 ```
 

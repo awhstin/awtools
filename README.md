@@ -1,75 +1,75 @@
-a\_theme
-========
+[![Project Status: Active - The project has reached a stable, usable
+state and is being actively
+developed.](http://www.repostatus.org/badges/0.1.0/active.svg)](http://www.repostatus.org/#active)
 
-A simple, distilled, \#rstats theme used mainly on [www.austinwehrwein.com](https://austinwehrwein.com/)
+awtools
+=======
 
-My main theme now is the <code>a\_plex\_theme</code> which the fonts are available from Google Fonts:
+A simple, distilled, \#rstats theme used mainly on
+[www.austinwehrwein.com](https://austinwehrwein.com/)
 
--   [IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono) (plot title, legend)
--   [Open Sans](https://fonts.google.com/specimen/Open+Sans) (subtitle, captions, axis\_text)
+The main theme is the <code>a\_plex\_theme</code> which the fonts are
+available from Google Fonts:
 
-The original <code>a\_theme</code> uses fonts that can be found and downloaded from Google Fonts:
+-   [IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono)
+    (plot title, legend)
+-   [IBM Plex Sans](https://fonts.google.com/specimen/IBM+Plex+Sans)
+    (subtitle, captions, axis\_text)
 
--   [Roboto](https://fonts.google.com/specimen/Slabo+27px) (plot title, legend)
--   [Open Sans](https://fonts.google.com/specimen/Open+Sans) (subtitle, captions, axis\_text)
+<code>a\_dark\_theme</code> shares mostly all the same elements of the
+main theme but the colors are adjusted to make a dark theme.
 
-The new <code>a\_robot\_theme</code> uses fonts that can be found and downloaded from Google Fonts:
+Examples
+--------
 
--   [Roboto Slab](https://fonts.google.com/specimen/Roboto+Slab) (plot title, legend)
--   [Roboto Light](https://fonts.google.com/specimen/Roboto) (subtitle, captions, axis\_text)
+\#\#\#\#<code>a\_plex\_theme</code> features: - grid: \[TRUE/FALSE\]
+turns off the main panel grids. - noaxis: \[TRUE/FALSE\] turns off the
+axis of the plot, seen mainly in maps. - emphasis: \[‘x’,‘y’,‘xy’\] adds
+a bold to an axis title for emphasis.
 
-The new <code>a\_concert\_theme</code> uses fonts that can be found and downloaded from Google Fonts:
-
--   [Concert One](https://fonts.google.com/specimen/Concert+One) (plot title, axis\_title)
--   [Inconsolata](https://fonts.google.com/specimen/Inconsolata) (subtitle, captions, axis\_text)
-
-Get it
-------------
-<code>devtools::install_github('awhstin/awtools')</code>
-
-New Examples
-------------
-
-#### <code>a\_plex\_theme</code> features:
-
--   grid: \[TRUE/FALSE\] turns off the main panel grids.
--   noaxis: \[TRUE/FALSE\] turns off the axis of the plot, seen mainly in maps.
--   emphasis: \['x','y','xy'\] adds a bold to an axis title for emphasis.
+\#\#palettes
 
 ``` r
-groups<-unique(uspopage$AgeGroup)
-uspopage<-uspopage%>%
-  filter(uspopage$AgeGroup %in% head(groups,6))
-ggplot(uspopage, aes(x=Year, y=Thousands, color=AgeGroup)) + 
-  geom_line(size=1) +
-  a_main_color() +
-  scale_y_continuous(labels = scales::comma)+
-  labs(title="Age distribution of population\nin the U.S., 1900-2002",
-       subtitle="Example data from the R Graphics Cookbook.",
-       caption="Source: R Graphics Cookbook") +
-  a_plex_theme() +
-  theme(legend.position="bottom")
+pal.bands(ppalette,mpalette,spalette,gpalette,labels = c('Primary','Flat','Secondary','Gray'))
 ```
 
 ![](README_files/figure-markdown_github/unnamed-chunk-2-1.png)
 
-A new update to the awtools package sees a new dark theme that is based on the main plex theme.
+An example using the <code>a\_plex\_theme</code> with the
+<code>a\_flat\_color</code> palette.
 
 ``` r
-ggplot(uspopage, aes(x=Year, y=Thousands, color=AgeGroup)) + 
-  geom_line(size=1) +
-  a_main_color() +
-  scale_y_continuous(labels = scales::comma)+
-  labs(title="Age distribution of population\nin the U.S., 1900-2002",
-       subtitle="Example data from the R Graphics Cookbook.",
-       caption="Source: R Graphics Cookbook") +
-  a_dark_theme() +
-  theme(legend.position="bottom")
+ggplot(heightweight,aes(x=heightIn,y=weightLb, color = factor(round(ageYear)))) + 
+  geom_point() +
+  a_plex_theme() +
+  a_flat_color() +
+  labs(
+    title='Height and Weight',
+    subtitle='Sample data of height inches and weight in pounds.',
+    caption='Source: R Graphics Cookbook',
+    color='Age'
+  )
 ```
 
 ![](README_files/figure-markdown_github/unnamed-chunk-3-1.png)
 
-And a new <code>a\_gray\_color</code> and <code>a\_gray\_palette</code> which is a simple four color grays palette.
+Example of <code>a\_dark\_theme</code> with the primary color palette.
+
+``` r
+ggplot(mtcars, aes(mpg, wt)) +
+  geom_point(aes(color=factor(carb), size=drat)) +
+  labs(x="Fuel efficiency (mpg)", y="Weight (tons)",
+       title="Basic scatterplot example",
+       subtitle="A demonstration",
+       caption="This be a caption") + 
+  a_primary_color() +
+  a_dark_theme()
+```
+
+![](README_files/figure-markdown_github/unnamed-chunk-4-1.png)
+
+And a new <code>a\_gray\_color</code> and <code>a\_gray\_palette</code>
+which is a simple four color grays palette.
 
 ``` r
 lax<-read_csv('https://raw.githubusercontent.com/awhstin/temperaturesv2/master/LAX-NCDC-2015-18.csv') %>% 
@@ -106,92 +106,80 @@ ggplot(lax, aes(x=TAVG, y=month, fill=year)) +
 
     ## Picking joint bandwidth of 1.23
 
-![](README_files/figure-markdown_github/unnamed-chunk-4-1.png)
+![](README_files/figure-markdown_github/unnamed-chunk-5-1.png)
 
-Old examples
-------------
+\#\#Old
+
+The original <code>a\_theme</code> uses fonts that can be found and
+downloaded from Google Fonts:
+
+-   [Roboto](https://fonts.google.com/specimen/Slabo+27px) (plot title,
+    legend)
+-   [Open Sans](https://fonts.google.com/specimen/Open+Sans) (subtitle,
+    captions, axis\_text)
+
+The new <code>a\_robot\_theme</code> uses fonts that can be found and
+downloaded from Google Fonts:
+
+-   [Roboto Slab](https://fonts.google.com/specimen/Roboto+Slab) (plot
+    title, legend)
+-   [Roboto Light](https://fonts.google.com/specimen/Roboto) (subtitle,
+    captions, axis\_text)
+
+The new <code>a\_concert\_theme</code> uses fonts that can be found and
+downloaded from Google Fonts:
+
+-   [Concert One](https://fonts.google.com/specimen/Concert+One) (plot
+    title, axis\_title)
+-   [Inconsolata](https://fonts.google.com/specimen/Inconsolata)
+    (subtitle, captions, axis\_text)
 
 Here is a simple scatterplot with the original <code>a\_theme</code>.
 
 ``` r
-ggplot(heightweight,aes(x=ageYear,y=heightIn,color=ageYear))+
+ggplot(heightweight,aes(x=ageYear,y=heightIn, color=sex))+
   geom_point()+
   a_theme()+
+  a_scale_color() +
   labs(title='Height by Age',
        subtitle='Sample data of height in inches by age in years.',
        caption='Source: R Graphics Cookbook')
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-5-1.png)
-
-Here is an example of the color palette.
-
-``` r
-ggplot(uspopage, aes(x=Year, y=Thousands, fill=AgeGroup)) + 
-  geom_area() +
-  a_scale_fill() +
-  scale_y_continuous(labels = scales::comma)+
-  labs(title="Age distribution of population\nin the U.S., 1900-2002",
-       subtitle="Example data from the R Graphics Cookbook.",
-       caption="Source: R Graphics Cookbook") +
-  a_theme() +
-  theme(legend.position="bottom")
-```
-
 ![](README_files/figure-markdown_github/unnamed-chunk-6-1.png)
 
-I also created a reverse of the color palette which is debuted along with the 'a\_robot\_theme'.
+<code>a\_robot\_theme</code> gets the name from the use of Roboto and
+Roboto Slab for the base and plot title fonts.
 
 ``` r
-ggplot(uspopage, aes(x=Year, y=Thousands, fill=AgeGroup)) + 
-  geom_area() +
-  a_reversed_fill() +
-  scale_y_continuous(labels = scales::comma)+
-  labs(title="Age distribution of population\nin the U.S., 1900-2002",
-       subtitle="Example data from the R Graphics Cookbook.",
-       caption="Source: R Graphics Cookbook") +
+ggplot(heightweight,aes(x=heightIn,y=ageYear, color = factor(round(ageYear)))) + 
+  geom_point() +
   a_robot_theme() +
-  theme(legend.position="bottom")
+  a_flat_color() +
+  labs(
+    title='Height and Age',
+    subtitle='Sample data of height inches and age in years.',
+    caption='Source: R Graphics Cookbook',
+    color='Age'
+  )
 ```
 
 ![](README_files/figure-markdown_github/unnamed-chunk-7-1.png)
 
-Finally for work I compare 4 and 6 factors often so I created a stepped version of my color palette.
-
-I also created a reverse of the color palette which is seen below. There has been some work that requires a slightly more editorial style graph so here is also the debut of the 'a\_concert\_theme'.
+The <code>a\_concert\_theme</code> was developed for a more editorial
+style visualization.
 
 ``` r
-groups<-unique(uspopage$AgeGroup)
-uspopages<-uspopage%>%
-  filter(uspopage$AgeGroup %in% head(groups,4))
-ggplot(uspopages, aes(x=Year, y=Thousands, fill=AgeGroup)) + 
-  geom_area() +
-  a_step_fill() +
-  scale_y_continuous(labels = scales::comma)+
-  labs(title="Age distribution of population\nin the U.S., 1900-2002",
-       subtitle="Example data from the R Graphics Cookbook.",
-       caption="Source: R Graphics Cookbook") +
+ggplot(climate,aes(x=Year,y=climate$Anomaly10y, color=Source)) + 
+  geom_line(size=.75) +
   a_concert_theme() +
-  theme(legend.position="bottom")
+  a_primary_color() +
+  labs(
+    title='Temperature Anomaly',
+    subtitle='Anomaly in Celsius, smoothed over ten years',
+    caption='Source: R Graphics Cookbook',
+    y='Anomaly'
+  )
 ```
 
 ![](README_files/figure-markdown_github/unnamed-chunk-8-1.png)
-
-Finally a little display of a new color palette.
-
-``` r
-groups<-unique(uspopage$AgeGroup)
-uspopage<-uspopage%>%
-  filter(uspopage$AgeGroup %in% head(groups,6))
-ggplot(uspopage, aes(x=Year, y=Thousands, color=AgeGroup)) + 
-  geom_line(size=1) +
-  a_main_color() +
-  scale_y_continuous(labels = scales::comma)+
-  labs(title="Age distribution of population\nin the U.S., 1900-2002",
-       subtitle="Example data from the R Graphics Cookbook.",
-       caption="Source: R Graphics Cookbook") +
-  a_concert_theme() +
-  theme(legend.position="bottom")
-```
-
-![](README_files/figure-markdown_github/unnamed-chunk-9-1.png)

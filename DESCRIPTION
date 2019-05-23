@@ -1,11 +1,24 @@
 Package: awtools
 Type: Package
-Title: awtools: tools and aesthetic elements from austinwehrwein.com
-Version: 0.1.0
+Title: awtools: misc tools and themes for austinwehrwein.com
+Version: 0.2.0
 Author: Austin Wehrwein
-Maintainer: <shinylearnr@gmail.com>
-Description: Very small package holding some useful things I use on
+Maintainer: <jawehrwein@gmail.com>
+Description: Distilled package holding some useful things I use on
     austinwehrwein.com. Some themes, color palettes, functions etc.
+URL: http://github.com/awhstin/awtools
+BugReports: https://github.com/awhstin/awtools/issues
 License: MIT
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 6.1.1
+Imports:
+    ggplot2 (>= 2.2.1),
+    grDevices,
+    dplyr,
+    grid,
+    scales,
+    extrafont,
+    knitr,
+    rmarkdown,
+    tools
