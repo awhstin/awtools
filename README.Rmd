@@ -9,6 +9,11 @@ output:
 # a_theme
 A simple, distilled, #rstats theme used mainly on [www.austinwehrwein.com](https://austinwehrwein.com/)
 
+My main theme now is the <code>a_plex_theme</code> which the fonts are available from Google Fonts:
+
+- [IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono) (plot title, legend)
+- [Open Sans](https://fonts.google.com/specimen/Open+Sans) (subtitle, captions, axis_text)
+
 The original <code>a_theme</code> uses fonts that can be found and downloaded from Google Fonts:
 
 - [Roboto](https://fonts.google.com/specimen/Slabo+27px) (plot title, legend)
@@ -24,15 +29,65 @@ The new <code>a_concert_theme</code> uses fonts that can be found and downloaded
 - [Concert One](https://fonts.google.com/specimen/Concert+One) (plot title, axis_title)
 - [Inconsolata](https://fonts.google.com/specimen/Inconsolata) (subtitle, captions, axis_text)
  
- # Examples
-Here is a simple scatterplot with the original <code>a_theme</code>.
-```{r echo=TRUE, message=FALSE, warning=FALSE}
-#devtools::install_github('awhstin/awtools')
+## New Examples
+####<code>a_plex_theme</code> features:
+- grid: [TRUE/FALSE] turns off the main panel grids.
+- noaxis: [TRUE/FALSE] turns off the axis of the plot, seen mainly in maps.
+- emphasis: ['x','y','xy'] adds a bold to an axis title for emphasis. 
+
+```{r include=FALSE,warning=FALSE}
 library(awtools)
 library(gcookbook)
 library(ggplot2)
-library(dplyr)
+library(tidyverse)
+library(ggridges)
+```
+```{r warning=FALSE}
+groups<-unique(uspopage$AgeGroup)
+uspopage<-uspopage%>%
+  filter(uspopage$AgeGroup %in% head(groups,6))
+ggplot(uspopage, aes(x=Year, y=Thousands, color=AgeGroup)) + 
+  geom_line(size=1) +
+  a_main_color() +
+  scale_y_continuous(labels = scales::comma)+
+  labs(title="Age distribution of population\nin the U.S., 1900-2002",
+       subtitle="Example data from the R Graphics Cookbook.",
+       caption="Source: R Graphics Cookbook") +
+  a_plex_theme() +
+  theme(legend.position="bottom")
+```
 
+A new update to the awtools package sees a new dark theme that is based on the main plex theme.
+
+```{r warning=FALSE}
+ggplot(uspopage, aes(x=Year, y=Thousands, color=AgeGroup)) + 
+  geom_line(size=1) +
+  a_main_color() +
+  scale_y_continuous(labels = scales::comma)+
+  labs(title="Age distribution of population\nin the U.S., 1900-2002",
+       subtitle="Example data from the R Graphics Cookbook.",
+       caption="Source: R Graphics Cookbook") +
+  a_dark_theme() +
+  theme(legend.position="bottom")
+```
+ 
+And a new <code>a_gray_color</code> and <code>a_gray_palette</code> which is a simple four color grays palette.
+
+```{r warning=FALSE}
+lax<-read_csv('https://raw.githubusercontent.com/awhstin/temperaturesv2/master/LAX-NCDC-2015-18.csv') %>% 
+  filter(months(DATE)=='January')%>%
+  mutate(year=format(DATE,'%Y'),
+         month=factor(months(DATE), levels=rev(month.name)))
+
+ggplot(lax, aes(x=TAVG, y=month, fill=year)) +
+  geom_density_ridges(scale=.9, color=NA) +
+  a_plex_theme(grid=FALSE) +
+  a_gray_fill()
+```
+
+##Old examples
+Here is a simple scatterplot with the original <code>a_theme</code>.
+```{r echo=TRUE, message=FALSE, warning=FALSE}
 ggplot(heightweight,aes(x=ageYear,y=heightIn,color=ageYear))+
   geom_point()+
   a_theme()+
@@ -100,3 +155,4 @@ ggplot(uspopage, aes(x=Year, y=Thousands, color=AgeGroup)) +
   a_concert_theme() +
   theme(legend.position="bottom")
 ```
+

@@ -203,8 +203,8 @@ a_concert_theme<- function(
 }
 #Plex
 a_plex_theme<- function(
-  base_family="Open Sans",
-  base_size = 8,
+  base_family="IBM Plex Sans",
+  base_size = 10,
   plot_title_family='IBM Plex Mono',
   plot_title_size = 18,
   plot_title_face="bold",
@@ -215,7 +215,7 @@ a_plex_theme<- function(
   strip_text_size = 10,
   strip_text_face = "plain",
   caption_family= base_family,
-  caption_size = 9,
+  caption_size = 10,
   caption_face = "plain",
   axis_text_size = base_size,
   axis_title_family = plot_title_family,
@@ -271,7 +271,7 @@ a_plex_theme<- function(
 
 #Dark Plex
 a_dark_theme<- function(
-  base_family="Open Sans",
+  base_family="IBM Plex Sans",
   base_size = 8,
   plot_title_family='IBM Plex Mono',
   plot_title_size = 18,
