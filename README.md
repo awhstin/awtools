@@ -26,11 +26,6 @@ Examples
 - noaxis: \[TRUE/FALSE\] turns off the axis of the plot, seen mainly in maps. 
 - emphasis: \[‘x’,‘y’,‘xy’\] adds a bold to an axis title for emphasis.
 
-<code>a\_plex\_theme</code> features: - grid: \[TRUE/FALSE\]
-turns off the main panel grids. - noaxis: \[TRUE/FALSE\] turns off the
-axis of the plot, seen mainly in maps. - emphasis: \[‘x’,‘y’,‘xy’\] adds
-a bold to an axis title for emphasis.
-
 Palettes
 --------
 
