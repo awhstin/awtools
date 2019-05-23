@@ -19,13 +19,6 @@ available from Google Fonts:
 <code>a\_dark\_theme</code> shares mostly all the same elements of the
 main theme but the colors are adjusted to make a dark theme.
 
-Examples
---------
-<code>a\_plex\_theme</code> features: 
-- grid: \[TRUE/FALSE\] turns off the main panel grids. 
-- noaxis: \[TRUE/FALSE\] turns off the axis of the plot, seen mainly in maps. 
-- emphasis: \[‘x’,‘y’,‘xy’\] adds a bold to an axis title for emphasis.
-
 Palettes
 --------
 
@@ -35,7 +28,14 @@ pal.bands(ppalette,mpalette,spalette,gpalette,labels = c('Primary','Flat','Secon
 
 ![](README_files/figure-markdown_github/unnamed-chunk-2-1.png)
 
-An example using the <code>a\_plex\_theme</code> with the
+Examples
+--------
+<code>a\_plex\_theme</code> features: 
+- grid: \[TRUE/FALSE\] turns off the main panel grids. 
+- noaxis: \[TRUE/FALSE\] turns off the axis of the plot, seen mainly in maps. 
+- emphasis: \[‘x’,‘y’,‘xy’\] adds a bold to an axis title for emphasis.
+
+All examples are made using the <code>gcookbook</code> package. Let's start with an example using the <code>a\_plex\_theme</code> with the
 <code>a\_flat\_color</code> palette.
 
 ``` r
