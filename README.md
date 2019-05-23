@@ -22,12 +22,13 @@ main theme but the colors are adjusted to make a dark theme.
 Examples
 --------
 
-\#\#\#\#<code>a\_plex\_theme</code> features: - grid: \[TRUE/FALSE\]
-turns off the main panel grids. - noaxis: \[TRUE/FALSE\] turns off the
-axis of the plot, seen mainly in maps. - emphasis: \[‘x’,‘y’,‘xy’\] adds
-a bold to an axis title for emphasis.
+<code>a\_plex\_theme</code> features: 
+- grid: \[TRUE/FALSE\] turns off the main panel grids. 
+- noaxis: \[TRUE/FALSE\] turns off the axis of the plot, seen mainly in maps. 
+- emphasis: \[‘x’,‘y’,‘xy’\] adds a bold to an axis title for emphasis.
 
-\#\#palettes
+Palettes
+--------
 
 ``` r
 pal.bands(ppalette,mpalette,spalette,gpalette,labels = c('Primary','Flat','Secondary','Gray'))
@@ -108,8 +109,8 @@ ggplot(lax, aes(x=TAVG, y=month, fill=year)) +
 
 ![](README_files/figure-markdown_github/unnamed-chunk-5-1.png)
 
-\#\#Old
-
+Old
+---
 The original <code>a\_theme</code> uses fonts that can be found and
 downloaded from Google Fonts:
 
