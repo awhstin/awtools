@@ -8,6 +8,8 @@ awtools
 A simple, distilled, \#rstats theme used mainly on
 [www.austinwehrwein.com](https://austinwehrwein.com/)
 
+<code>devtools::install_github('awhstin/awtools')</code>
+
 The main theme is the <code>a\_plex\_theme</code> which the fonts are
 available from Google Fonts:
 
