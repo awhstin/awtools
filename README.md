@@ -25,7 +25,7 @@ Palettes
 --------
 
 ``` r
-pal.bands(ppalette,mpalette,spalette,gpalette,labels = c('Primary','Flat','Secondary','Gray'))
+pal.bands(ppalette,mpalette,spalette,gpalette,bpalette,labels = c('Primary','Flat','Secondary','Gray','Big'))
 ```
 
 ![](README_files/figure-markdown_github/unnamed-chunk-2-1.png)

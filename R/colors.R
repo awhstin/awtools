@@ -14,6 +14,10 @@ a_palette<-c('#2A363B','#019875','#99B898','#FECEA8','#FF847C','#E84A5F','#C0392
 #'grays
 #' @export
 gpalette<-c('#d6d6d6','#adadad','#707070','#333333') 
+#'big color palette
+bpalette<-c('#c62828','#f44336','#9c27b0','#673ab7','#3f51b5','#2196f3','#29b6f6',
+       '#006064','#009688','#4caf50','#8bc34a','#ffeb3b','#ff9800','#795548',
+       '#9e9e9e','#607d8b')
 
 
 #' Original color palette with decent brightness
@@ -33,6 +37,24 @@ a_scale_color<-a_scale_colour
 #' @md
 #' @export
 a_scale_fill <- function(...) { discrete_scale("fill", "a", a_pal(), ...) }
+
+#' Big color palette
+#'
+#' @export
+#' @examples
+#' library(scales)
+#' scales::show_col(b_pal()(8))
+b_pal <- function() {scales::manual_pal(bpalette) }
+
+#' @md
+#' @export
+b_scale_colour <- function(...) { discrete_scale("colour", "a", b_pal(), ...) }
+#' @md
+#' @export
+b_scale_color<-b_scale_colour
+#' @md
+#' @export
+b_scale_fill <- function(...) { discrete_scale("fill", "a", b_pal(), ...) }
 
 
 #' Primary color palette with decent brightness
