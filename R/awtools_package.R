@@ -6,5 +6,3 @@
 #' @docType package
 #' @keywords internal
 #' @import ggplot2 grid scales extrafont grDevices dplyr
-
-
