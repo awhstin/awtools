@@ -5,17 +5,17 @@
 \title{All of the themes follow a similar pattern mainly just changing out font families
 and small tweaks to plot elements}
 \usage{
-a_dark_theme(base_family = "IBM Plex Sans", base_size = 10,
+a_dark_theme(base_family = "IBM Plex Sans", base_size = 9,
   plot_title_family = "IBM Plex Mono", plot_title_size = 20,
   plot_title_face = "bold", subtitle_family = base_family,
   subtitle_size = 10, subtitle_face = "plain",
   strip_text_family = base_family, strip_text_size = 10,
   strip_text_face = "plain", caption_family = base_family,
-  caption_size = 10, caption_face = "plain",
+  caption_size = 9, caption_face = "plain",
   axis_text_size = base_size, axis_title_family = plot_title_family,
   axis_title_size = 10, axis_title_face = "plain",
-  grid_col = "#555555", grid = TRUE, noaxis = FALSE,
-  emphasis = "xy", rotate_x = FALSE)
+  grid_col = "#555555", shade = "#1d1d1d", grid = TRUE,
+  noaxis = FALSE, emphasis = "xy", rotate_x = FALSE)
 }
 \arguments{
 \item{base_family, base_size}{base font family and size}
@@ -30,7 +30,8 @@ a_dark_theme(base_family = "IBM Plex Sans", base_size = 10,
 
 \item{axis_title_family, axis_title_face, axis_title_size}{axis title font family, face and size}
 
-\item{grid_col, axis_col}{grid & axis colors; both default to \code{#cccccc}}
+\item{grid_col, axis_col}{grid & axis colors; both default to \code{#cccccc}
+#' @param shade is a parameter to change the plot background color defaults to \code{#1d1d1d}}
 
 \item{grid}{panel grid (\code{TRUE}, \code{FALSE}, or a combination of \code{X}, \code{x}, \code{Y}, \code{y})}
 

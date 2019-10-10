@@ -1,7 +1,7 @@
 Package: awtools
 Type: Package
 Title: awtools: misc tools and themes for austinwehrwein.com
-Version: 0.2.0
+Version: 0.2.1
 Author: Austin Wehrwein
 Maintainer: <jawehrwein@gmail.com>
 Description: Distilled package holding some useful things I use on

@@ -108,6 +108,7 @@ a_plex_theme<- function(
 #' @param caption_family,caption_face,caption_size plot caption family, face, size 
 #' @param axis_title_family,axis_title_face,axis_title_size axis title font family, face and size
 #' @param grid_col,axis_col grid & axis colors; both default to `#cccccc`
+#' #' @param shade is a parameter to change the plot background color defaults to `#1d1d1d`
 #' @param grid panel grid (`TRUE`, `FALSE`, or a combination of `X`, `x`, `Y`, `y`)
 #' @param noaxis include/exclude axis (`TRUE`, `FALSE`, or a combination of `X`, `x`, `Y`, `y`)
 #' @param emphasis bold one axis title of both (a combination of 'x','y' or 'xy') 
@@ -144,6 +145,7 @@ a_dark_theme<- function(
   axis_title_size = 10,
   axis_title_face = "plain",
   grid_col='#555555',
+  shade='#1d1d1d',
   grid=TRUE,
   noaxis=FALSE,
   emphasis='xy',
@@ -190,8 +192,8 @@ a_dark_theme<- function(
   aplot <- aplot + theme(plot.title=element_text(hjust=0, size=plot_title_size, family=plot_title_family, face=plot_title_face,color='#e3e3e3'))
   aplot <- aplot + theme(plot.subtitle=element_text(hjust=0, size=subtitle_size, margin=margin(t = 4, b = 12, unit = "pt"),family=subtitle_family, face=subtitle_face,color='#e3e3e3', lineheight=1))
   aplot <- aplot + theme(plot.caption=element_text(hjust=1, size=caption_size,  family=caption_family, face=caption_face,color='#808080'))
-  aplot <- aplot + theme(plot.background = element_rect(fill = "#2a2a2a")) #plot background
-  aplot <- aplot + theme(panel.background = element_rect(fill = "#2a2a2a",
-                                                         colour = "#2a2a2a"))
+  aplot <- aplot + theme(plot.background = element_rect(fill = shade)) #plot background
+  aplot <- aplot + theme(panel.background = element_rect(fill = shade,
+                                                         colour = shade))
   aplot
 }

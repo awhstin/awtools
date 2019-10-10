@@ -5,13 +5,13 @@
 \title{All of the themes follow a similar pattern mainly just changing out font families
 and small tweaks to plot elements}
 \usage{
-a_plex_theme(base_family = "IBM Plex Sans", base_size = 10,
+a_plex_theme(base_family = "IBM Plex Sans", base_size = 9,
   plot_title_family = "IBM Plex Mono", plot_title_size = 20,
   plot_title_face = "bold", subtitle_family = base_family,
   subtitle_size = 10, subtitle_face = "plain",
   strip_text_family = base_family, strip_text_size = 10,
   strip_text_face = "plain", caption_family = base_family,
-  caption_size = 10, caption_face = "plain",
+  caption_size = 9, caption_face = "plain",
   axis_text_size = base_size, axis_title_family = plot_title_family,
   axis_title_size = 10, axis_title_face = "plain",
   grid_col = "#dedede", grid = TRUE, noaxis = FALSE,
